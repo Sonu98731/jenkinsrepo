@@ -1,31 +1,23 @@
 pipeline {
     agent any
-
+    environment {
+	    PRAVIN = 'jenkins-admin'
+	}
+	
     stages {
         stage('JOB A') {
             steps {
-                echo 'Hello World'
+                echo 'Hello A World'
             }
         }
-		  stage('Run Linux command') {
+		stage('JOB B') {
             steps {
-                sh """
-				date
-				cal
-				whoami
-				pwd
-				"""
-				
+                echo 'Hello B World'
             }
         }
 		  stage('JOB C') {
             steps {
-                echo 'Hello World'
-            }
-        }
-		  stage('JOB D') {
-            steps {
-                echo 'Hello World'
+                echo 'Hello C World'
             }
         }
     }
