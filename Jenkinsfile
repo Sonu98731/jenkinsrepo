@@ -13,6 +13,7 @@ pipeline {
 		stage('JOB B') {
             steps {
                 echo 'Hello B World'
+				sh 'hi my custom variable value is $PRAVIN'
             }
         }
 		  stage('JOB C') {
