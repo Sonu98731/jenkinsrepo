@@ -7,9 +7,10 @@ pipeline {
                 echo 'Hello World'
             }
         }
-		  stage('JOB B') {
+		  stage('Run Linux command') {
             steps {
-                echo 'Hello World'
+                sh 'date'
+				sh 'cal'
             }
         }
 		  stage('JOB C') {
