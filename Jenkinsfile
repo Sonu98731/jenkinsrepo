@@ -9,8 +9,13 @@ pipeline {
         }
 		  stage('Run Linux command') {
             steps {
-                sh 'date'
-				sh 'cal'
+                sh """
+				date
+				cal
+				whoami
+				pwd
+				"""
+				
             }
         }
 		  stage('JOB C') {
