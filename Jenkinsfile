@@ -11,15 +11,15 @@ pipeline {
     }
             steps {
 			    echo 'Hello A World'
-				sh 'hi my stage variable value is $RAM'
-				sh 'hi my custom variable value is $PRAVIN'
+				sh 'echo hi my stage variable value is $RAM'
+				sh 'echo hi my custom variable value is $PRAVIN'
 			}
 		}
 		stage('JOB B') {
             steps {
                 echo 'Hello B World'
-				sh 'hi my custom variable value is $PRAVIN'
-				sh 'hi my stage variable value is $RAM'
+				sh 'echo hi my custom variable value is $PRAVIN'
+				sh 'echo hi my stage variable value is $RAM'
             }
         }
 		  stage('JOB C') {
