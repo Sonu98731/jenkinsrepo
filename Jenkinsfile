@@ -1,31 +1,23 @@
 pipeline {
     agent any
-    environment {
-	    PRAVIN = 'jenkins-admin'
+	parameters {
+	    string(name: 'PERSON', defaultvalue: 'Mr Jenkins', description: 'Who should I say hello to?')
+		
 	}
-	
-    stages {
-        stage('JOB A') {
-        environment {
-        RAM = 'devops-trainer'
-    }
-            steps {
-			    echo 'Hello A World'
-				sh 'echo hi my stage variable value is $RAM'
-				sh 'echo hi my custom variable value is $PRAVIN'
+	stages {
+	    stage('runign linux command') {
+		    steps {
+			    sh """
+				date
+				whoami
+				"""
 			}
 		}
-		stage('JOB B') {
-            steps {
-                echo 'Hello B World'
-				sh 'echo hi my custom variable value is $PRAVIN'
-				sh 'echo hi my stage variable value is $RAM'
-            }
-        }
-		  stage('JOB C') {
-            steps {
-                echo 'Hello C World'
-            }
-        }
-    }
+		stage('Calling my value') {
+		    steps {
+			    echo "Hello ${params.PERSON}"
+			
+			}
+		}
+	}
 }
