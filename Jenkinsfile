@@ -1,25 +1,28 @@
 pipeline {
     agent any
-	  environment {
-        ACCESS = credentials('MY_CRED')	  
-	}
-	
 	stages {
-	    stage('running linux command') {
+	    stage('Parallel Tasks') {
 		    steps {
-			    sh """
-				date
-				whoami
-				"""
+			    parallel(
+				    Task1: {
+					    echo 'Running Task 1'
+						// some build/test commands
+					},
+					Task2: {
+					    echo 'Running Task 2'
+						// some other commands
+					},
+					Task3: }
+					    echo 'Running Task 3'
+						// another command
+					}
+				)
 			}
 		}
-		stage('Load MY Docker Cred') {
-		    steps {
-			echo "My UserName is $ACCESS_USR"
-			echo "My UserName is $ACCESS_PSW"
-			
+		stage('cal command') {
+		            steps {
+					sh 'cal'
 			}
 		}
-		
 	}
 }
