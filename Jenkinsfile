@@ -12,7 +12,7 @@ pipeline {
 					    echo 'Running Task 2'
 						// some other commands
 					},
-					Task3: }
+					Task3: {
 					    echo 'Running Task 3'
 						// another command
 					}
