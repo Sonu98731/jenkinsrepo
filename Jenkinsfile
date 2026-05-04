@@ -1,28 +1,24 @@
 pipeline {
     agent any
 	stages {
-	    stage('Parallel Tasks') {
-		    steps {
-			    parallel(
-				    Task1: {
-					    echo 'Running Task 1'
-						// some build/test commands
-					},
-					Task2: {
-					    echo 'Running Task 2'
-						// some other commands
-					},
-					Task3: {
-					    echo 'Running Task 3'
-						// another command
-					}
-				)
-			}
+	    stage('build step') {
+		     steps {
+			    echo "Build stage is running"
+			 }
 		}
-		stage('cal command') {
-		            steps {
-					sh 'cal'
-			}
+	}
+	post {
+	    always {
+		    echo "You can always see me"
+		}
+		success {
+		     echo "I am running because the job ran successfully"
+		}
+		unstable {
+		     echo "Gear up ! The build is unstable. Try fix it"
+		}
+		failure {
+		    echo "OMG ! The build failed"
 		}
 	}
 }
